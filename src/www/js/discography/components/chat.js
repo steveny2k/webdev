@@ -20,8 +20,6 @@ class ChatBox extends HTMLElement {
   constructor() {
     super();
 
-    //const template = document.getElementById('artist-list-template');
-
     this.attachShadow({ mode: "open" });
 
     const list = document.createElement('ul');
@@ -47,9 +45,25 @@ class ChatBox extends HTMLElement {
 
     // configuration for the chat
     this.chatHost = this.getAttribute('data-host');
-    this.chatRoom = this.getAttribute('data-code');
     this.chatUser = this.getAttribute('data-user');
 
+    // exercise: store it in the session for later
+    this.messagesCache = [];
+
+    const messagesString = sessionStorage.getItem('chatMessages');
+    const messages = messagesString && JSON.parse(messagesString);
+    messages && messages.forEach((message) => {
+      this.addMessage(message);
+    });
+  }
+
+  addMessage(message) {
+    const newMessage = document.createElement('li');
+    newMessage.innerHTML = message.message;
+    this.chatList.prepend(newMessage);
+
+    this.messagesCache.push(message);
+    sessionStorage.setItem('chatMessages', JSON.stringify(this.messagesCache));
   }
 
   // Create a new WebSocket and set up callbacks for sending and
@@ -59,34 +73,28 @@ class ChatBox extends HTMLElement {
   //
   //   https://github.com/pjones/wschat/blob/master/examples/example.js
   connectedCallback() {
+    let ws = new WebSocket(`ws://${this.chatHost}`);
 
-    let ws = new WebSocket(`ws://${this.chatHost}:3000/${this.chatRoom}`);
-
-    // <<: onmessage
     ws.addEventListener('message', (e) => {
       console.log("incoming message: " + e.data);
-
-      const newMessage = document.createElement('li');
-      newMessage.innerHTML = e.data;
-      this.chatList.prepend(newMessage);
+      const message = JSON.parse(e.data);
+      this.addMessage(message);
     });
-    // :>>
 
     this.chatForm.addEventListener('submit', (e) => {
       console.log("sending message to server");
       e.preventDefault();
-      const newMessage = document.createElement('li');
-      newMessage.innerHTML = this.chatInput.value;
-      this.chatList.prepend(newMessage);
 
-      // <<: send
-      ws.send(JSON.stringify({
-        sender: "John",
-        content: "hi"
-      }));
-      // :>>
+      const message = {
+        user: this.chatUser,
+        message: this.chatInput.value
+      };
 
+      // add our message
+      this.addMessage(message);
 
+      // send it along
+      ws.send(JSON.stringify(message));
     });
   }
 
