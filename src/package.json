@@ -16,6 +16,7 @@
     "nightwatch": "^0.9.8"
   },
   "scripts": {
+    "start": "node bin/server.js",
     "babel": "babel babel --out-dir babel-out --presets=@babel/env"
   },
   "repository": {
