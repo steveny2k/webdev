@@ -2,10 +2,11 @@ WebDev: Web Development Course
 ==============================
 
 This is the source code and training content for the Web
-Development course taught by [Peter J. Jones][pjones].
+Development course taught by [Ryan Morris][mrmorris].
 
-The official site for this course is
-<https://github.com/devalot/webdev>
+It is based off mixed course content originally authored by by [Peter J. Jones][pjones], [Ryan Morris][mrmorris] and [Joshua McNeese][jmcneese].
+
+Original source code for the course is located here: <https://github.com/devalot/webdev>
 
 Prerequisites
 -------------
@@ -16,16 +17,15 @@ installed to work correctly.
 Starting Things Up
 ------------------
 
-  1. Look in the `start-scripts` folder for a file matching your
-     operating system:
+  1. Install dependencies
 
-       - macOS: Double-click the `macos.command` file
+    `cd src && npm install`
 
-       - Windows: Double-click the `windows.cmd` file
+  2. Run the server from the `./src` directory
 
-       - Linux/*BSD: Open a term and use `linux.sh`
+    `npm start`
 
-  2. Open the following URL in your browser of choice:
+  3. Open the following URL in your browser of choice:
 
      <http://localhost:3000/>
 
@@ -42,5 +42,7 @@ Building the Course Content (PDF Files)
 
 The generated PDF files will be in the `result` directory.
 
+[jmcneese]: https://github.com/jmcneese
+[mrmorris]: https://github.com/mrmorris
 [pjones]: http://www.devalot.com/about/pjones.html
 [node.js]: https://nodejs.org/

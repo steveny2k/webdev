@@ -14,8 +14,8 @@
  *
  * 4. Create the following prototype functions:
  *
- *   add: Sums the stack then adds the sum to the calculator's value
- *   mul: Same as `add', except use multiplication
+ *   add: Sums the stack then adds the sum to the calculator's value -- then empties the stack
+ *   mul: Sums the stack then multiplies the sum by the calculator's value -- then empties the stack
  *   get: Returns the value of the current calculator value
  *
  * Example usage:

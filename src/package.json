@@ -4,7 +4,7 @@
   "description": "WebDev Exercises and Demos",
   "private": true,
   "directories": {},
-  "author": "Peter J. Jones",
+  "author": "Ryan Morris",
   "license": "BSD-2-Clause",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -13,13 +13,16 @@
     "@babel/plugin-proposal-decorators": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "mockapie": "git://github.com/pjones/mockapie.git",
-    "nightwatch": "^0.9.8"
+    "nightwatch": "^0.9.8",
+    "ws": "^6.1.3"
   },
   "scripts": {
-    "babel": "babel babel --out-dir babel-out --presets=@babel/env"
+    "babel": "babel babel --out-dir babel-out --presets=@babel/env",
+    "chat": "node bin/chat-server.js",
+    "start": "node bin/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devalot/webdev.git"
+    "url": "https://github.com/rm-training/webdevt"
   }
 }
