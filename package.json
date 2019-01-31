@@ -1,0 +1,21 @@
+{
+  "name": "webdev-clone",
+  "version": "1.0.0",
+  "description": "This is a dummy package.json to push  you into the /src directory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd src && npm start",
+    "install": "cd src && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rm-training/webdev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rm-training/webdev/issues"
+  },
+  "homepage": "https://github.com/rm-training/webdev#readme"
+}
