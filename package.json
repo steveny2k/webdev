@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/rm-training/webdev/issues"
   },
-  "homepage": "https://github.com/rm-training/webdev#readme"
+  "homepage": "https://github.com/rm-training/webdev#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }
