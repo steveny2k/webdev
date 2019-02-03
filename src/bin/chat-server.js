@@ -4,12 +4,16 @@
  *
  * Interact with me:
  *
- *
+ * https://www.npmjs.com/package/ws
  * https://www.npmjs.com/package/ws#sending-and-receiving-text-data
  */
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 3030 });
+
+wss.on("headers", function (headers) {
+	console.log(headers);
+});
 
 // Broadcast to all.
 wss.broadcast = function broadcast(data) {
@@ -20,7 +24,11 @@ wss.broadcast = function broadcast(data) {
 	});
 };
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws, req) => {
+	// headers, cookies, etc...
+	//console.log(req);
+	//const token = req.headers['x-auth-token'].split(/\s*,\s*/)[0];
+
 	ws.on('message', (message) => {
 		console.log('ws received: %s', message);
 

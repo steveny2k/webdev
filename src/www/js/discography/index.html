@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Discography App</title>
-  </head>
 
-  <body>
-    <h1>Discography</h1>
+<head>
+  <title>Discography App</title>
+</head>
 
-    <!-- List of artists! -->
-    <artist-list></artist-list>
+<body>
+  <h1>Discography</h1>
 
-    <!-- Live Chat! -->
-    <chat-box data-host="wschat.devalot.com"
-              data-code="ENTER YOUR ACCESS CODE HERE"
-              data-user="ENTER YOUR NAME HERE">
-    </chat-box>
+  <!-- List of artists! -->
+  <artist-list>
+    <span slot="title">artists!</span>
+    <span slot="subtitle">welcome...</span>
+  </artist-list>
 
+  <!-- Live Chat! -->
+  <chat-box data-host="wschat.devalot.com" data-code="ENTER YOUR ACCESS CODE HERE" data-user="ENTER YOUR NAME HERE">
+  </chat-box>
 
-    <!-- Write your templates here -->
+  <!-- Write your templates here -->
+  <template id="artist-list">
+    <section>
+      <header>
+        <slot name="title">tbd!</slot>
+        <slot name="subtitle">tbd!</slot>
+      </header>
+      <ul>
+      </ul>
+    </section>
+  </template>
 
-    <!-- Bring in our JavaScript files -->
-    <script src="../ajax/ajax.js"></script>
-    <script src="components/show.js"></script>
-    <script src="components/index.js"></script>
-    <script src="components/chat.js"></script>
-  </body>
+  <!-- for exercise #3 -->
+  <template id="artist-detail">
+    <slot name="name">Artist Name</slot>
+    (<slot name="year">Formation Year</slot>)
+  </template>
+
+  <!-- Bring in our JavaScript files -->
+  <script src="../ajax/ajax.js"></script>
+  <script src="components/show.js"></script>
+  <script src="components/index.js"></script>
+  <script src="components/chat.js"></script>
+</body>
+
 </html>
