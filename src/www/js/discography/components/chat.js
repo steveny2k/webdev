@@ -20,6 +20,8 @@ class ChatBox extends HTMLElement {
   constructor() {
     super();
 
+    this.messageStorage = [];
+
     const shadow = this.attachShadow({ mode: 'open' });
 
     // create a ul
@@ -46,10 +48,20 @@ class ChatBox extends HTMLElement {
     this.messagesUl.innerHTML = '';
   }
 
+  storeMessage(message) {
+    let messageStorage = JSON.parse(localStorage.getItem('messages'));
+    if (messageStorage && messageStorage.push) {
+      messageStorage.push(message);
+    } else {
+      messageStorage = [];
+    }
+    localStorage.setItem('messages', JSON.stringify(messageStorage));
+  }
+
   addMessage(message) {
+    this.storeMessage(message);
     const newMessageLi = document.createElement('li');
     newMessageLi.innerHTML = `${message.user} says: ${message.message}`;
-
     this.messagesUl.append(newMessageLi);
   }
 
@@ -62,6 +74,7 @@ class ChatBox extends HTMLElement {
   connectedCallback() {
     const host = this.getAttribute('data-host');
     const user = this.getAttribute('data-user');
+
 
     const connection = new WebSocket('ws://' + host);
 
