@@ -58,8 +58,18 @@ class ChatBox extends HTMLElement {
     localStorage.setItem('messages', JSON.stringify(messageStorage));
   }
 
-  addMessage(message) {
-    this.storeMessage(message);
+  renderFromStore() {
+    let messageStorage = JSON.parse(localStorage.getItem('messages')) || [];
+
+    messageStorage.forEach((message) => {
+      this.addMessage(message, false);
+    });
+  }
+
+  addMessage(message, cache = true) {
+    if (cache) {
+      this.storeMessage(message);
+    }
     const newMessageLi = document.createElement('li');
     newMessageLi.innerHTML = `${message.user} says: ${message.message}`;
     this.messagesUl.append(newMessageLi);
@@ -75,12 +85,13 @@ class ChatBox extends HTMLElement {
     const host = this.getAttribute('data-host');
     const user = this.getAttribute('data-user');
 
-
     const connection = new WebSocket('ws://' + host);
 
     connection.onopen = () => {
       console.log('connected');
+
       this.emptyMessages();
+      this.renderFromStore();
     }
 
     connection.onmessage = (message) => {
