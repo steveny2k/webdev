@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Simple</title>
+
+    <style type="text/css">
+      #messages {
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background-color: #ececec;
+      }
+
+      #messages ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages li {
+        background-color: #fff;
+        display: block;
+        border: 1px solid #c9c9c9;
+        padding: 1rem;
+        margin: 0 0 0.5rem 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Chat Simple</h1>
+
+    <form>
+      <input type="text" name="message" placeholder="Insert a message" />
+      <input type="submit" />
+    </form>
+    <div id="messages">
+      <ul>
+        <li><strong>UserName</strong> said:</li>
+        <li><strong>UserName</strong> said:</li>
+        <li><strong>UserName</strong> said:</li>
+      </ul>
+    </div>
+
+    <!-- Bring in our JavaScript files -->
+    <script src="./index.js"></script>
+  </body>
+</html>
