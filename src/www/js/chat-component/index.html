@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat - Component</title>
+  </head>
+
+  <body>
+    <h1>Chat Component</h1>
+
+    <!-- Live Chat! -->
+    <chat-box data-host="localhost:3030" data-user="Ryan"> </chat-box>
+
+    <template>
+      <form>
+        <input type="text" name="message" placeholder="Insert a message" />
+        <input type="submit" />
+      </form>
+      <div id="messages">
+        <ul>
+          <li><strong>UserName</strong> said:</li>
+          <li><strong>UserName</strong> said:</li>
+          <li><strong>UserName</strong> said:</li>
+        </ul>
+      </div>
+    </template>
+
+    <!-- Bring in our JavaScript files -->
+    <script src="./index.js"></script>
+  </body>
+</html>
