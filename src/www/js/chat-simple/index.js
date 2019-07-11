@@ -5,5 +5,5 @@
 // 1. Make sure your server & chat server are running
 //    npm start
 //    npm run chat
-// 2. Chat server url: "wss://localhost:3030"
+// 2. Chat server url: "ws://localhost:3030"
 //
